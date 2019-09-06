@@ -43,7 +43,6 @@ _Note:_ Environment can either be TEST or LIVE, each of this environment has it 
 right credentials. By default Environment is TEST
 
 ![](images/credentialPage.png)
-
 ## Methods
 #### Adding Account(s) To Your Profile
 Adding an account to your merchant profile on the RITs is a dual process. 
