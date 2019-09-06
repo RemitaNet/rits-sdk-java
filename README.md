@@ -42,7 +42,8 @@ in this class accordingly. Properties such as MerchantId, ApiKey, ApiToken, Key,
 _Note:_ Environment can either be TEST or LIVE, each of this environment has it respective Credential. Ensure you set the 
 right credentials. By default Environment is TEST
 
-#![](images/credentialPage.png)
+![](images/credentialPage.png)
+
 ## Methods
 #### Adding Account(s) To Your Profile
 Adding an account to your merchant profile on the RITs is a dual process. 
@@ -84,7 +85,7 @@ methods on the platform:
 	8. transRef: A unique reference that identifies a payment request. This reference can be used sub- sequently to retrieve the details/status of the payment request
 	9. requestId: This uniquely identifies the request
 
-![](images/singlePaymtPage.png)
+![](images/singlePaymtPage.PNG.)
 
 * Bulk Send Payment Request: Here, a single amount is debited to credit multiple accounts across several banks. Fields(payload) to set include the bulkPaymentInfo Parameters and paymentDetails Parameters
 	
