@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class BulkPaymentDetails implements Serializable {
 
-    private BigDecimal amount;
+    private String amount;
 
     private String authorizationId;
 
@@ -29,7 +29,7 @@ public class BulkPaymentDetails implements Serializable {
     private String transRef;
 
 
-    public BigDecimal getAmount() {
+    public String getAmount() {
         return amount;
     }
 
@@ -84,7 +84,7 @@ public class BulkPaymentDetails implements Serializable {
     }
 
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 

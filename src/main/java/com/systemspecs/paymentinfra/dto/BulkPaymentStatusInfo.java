@@ -10,7 +10,7 @@ public class BulkPaymentStatusInfo implements Serializable {
 
     private String debitAccountToken;
 
-    private BigDecimal feeAmount;
+    private String feeAmount;
 
     private String paymentState;
 
@@ -22,7 +22,7 @@ public class BulkPaymentStatusInfo implements Serializable {
 
     private String statusMessage;
 
-    private BigDecimal totalAmount;
+    private String totalAmount;
 
 
     public String getCurrencyCode() {
@@ -35,7 +35,7 @@ public class BulkPaymentStatusInfo implements Serializable {
     }
 
 
-    public BigDecimal getFeeAmount() {
+    public String getFeeAmount() {
         return feeAmount;
     }
 
@@ -65,7 +65,7 @@ public class BulkPaymentStatusInfo implements Serializable {
     }
 
 
-    public BigDecimal getTotalAmount() {
+    public String getTotalAmount() {
         return totalAmount;
     }
 
@@ -80,7 +80,7 @@ public class BulkPaymentStatusInfo implements Serializable {
     }
 
 
-    public void setFeeAmount(BigDecimal feeAmount) {
+    public void setFeeAmount(String  feeAmount) {
         this.feeAmount = feeAmount;
     }
 
@@ -110,7 +110,7 @@ public class BulkPaymentStatusInfo implements Serializable {
     }
 
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(String  totalAmount) {
         this.totalAmount = totalAmount;
     }
 

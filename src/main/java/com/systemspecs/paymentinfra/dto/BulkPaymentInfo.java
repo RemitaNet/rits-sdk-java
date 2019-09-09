@@ -14,7 +14,7 @@ public class BulkPaymentInfo implements Serializable {
 
     private String narration;
 
-    private BigDecimal totalAmount;
+    private String totalAmount;
 
 
     public String getBankCode() {
@@ -37,7 +37,7 @@ public class BulkPaymentInfo implements Serializable {
     }
 
 
-    public BigDecimal getTotalAmount() {
+    public String getTotalAmount() {
         return totalAmount;
     }
 
@@ -62,7 +62,7 @@ public class BulkPaymentInfo implements Serializable {
     }
 
 
-    public void setTotalAmount(BigDecimal totalAmount) {
+    public void setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
     }
 }

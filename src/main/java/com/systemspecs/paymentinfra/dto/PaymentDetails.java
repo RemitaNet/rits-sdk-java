@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 public class PaymentDetails implements Serializable {
 
-    private BigDecimal amount;
+    private String amount;
 
     private String benficiaryAccountNumber;
 
@@ -19,7 +19,7 @@ public class PaymentDetails implements Serializable {
     private String transRef;
 
 
-    public BigDecimal getAmount() {
+    public String getAmount() {
         return amount;
     }
 
@@ -49,7 +49,7 @@ public class PaymentDetails implements Serializable {
     }
 
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
