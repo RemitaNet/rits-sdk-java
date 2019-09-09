@@ -13,9 +13,6 @@ To install the remita-rpg-sdk-java from central repository, add dependency to yo
 
 Run mvn install to install dependency
 
-```
-PM> Install-Package RITs
-```
 ## Requirements
 *  Java 1.8 or later
 *  STS , IntelliJ , Eclipse
