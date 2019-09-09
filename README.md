@@ -261,13 +261,20 @@ The payment request status method essentially retrieves the status of a previous
     }
 
 
-     ```
+```
 
 #### Account Enquiry
 Payment Request Status finds all available information on a specific account, required fields(Payloads) are as follow;
-	1. accountNo: Account number of tokenized account to be looked up
-	2. bankCode: The bank code where the account is domiciled. Use the Banks Enquiry method
-	3. requestId: This uniquely identifies the request
+
+
+	   1. accountNo: Account number of tokenized account to be looked up
+	   2. bankCode: The bank code where the account is domiciled. Use the Banks Enquiry method
+	   3. requestId: This uniquely identifies the request
+
+
+
+
+
 ```java
 
     @PostMapping(value = "/accountEnquiry")
