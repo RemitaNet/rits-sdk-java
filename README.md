@@ -282,8 +282,7 @@ Payment Request Status finds all available information on a specific account, re
 
 ```java
 
-    @PostMapping(value = "/accountEnquiry")
-    public String getAccountEnquiry() throws Exception {
+      public String getAccountEnquiry() throws Exception {
         AccountEnqiriesRequest request = new AccountEnqiriesRequest();
         Credentials credentials=new Credentials();
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
@@ -295,9 +294,10 @@ Payment Request Status finds all available information on a specific account, re
         RemitaRITSService ritsService = new RemitaRITSService(credentials);
         request.setAccountNo("044222222");
         request.setBankCode("044");
+        request.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         AccountEnquiriesResponse accountEnquiry = ritsService.accountEnquiry(request);
         return gson.toJson(accountEnquiry);
-    }
+	}
 
 
 ```
