@@ -281,7 +281,7 @@ Payment Request Status finds all available information on a specific account, re
 
 
 ```java
-
+      @PostMapping(value = "/accountEnquiry")
       public String getAccountEnquiry() throws Exception {
         AccountEnqiriesRequest request = new AccountEnqiriesRequest();
         Credentials credentials=new Credentials();
