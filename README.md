@@ -88,12 +88,17 @@ Adding an account to your merchant profile on the RITs is a dual process.
        credentials.setSecretKey("cymsrniuxqtgfzva");
        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
        RemitaRITSService ritsService = new RemitaRITSService(credentials);
-        AccountValidationRequest request = new AccountValidationRequest();
+       AccountValidationRequest request = new AccountValidationRequest();
         request.setRemitaTransRef("MTUxNjYwOTcxNzM3MQ==");
-        AuthParamsRequest params = new AuthParamsRequest();
         List<AuthParamsRequest> paramsList = new ArrayList<>();
-        params.setParam1("");
-        params.setValue("");
+        AuthParamsRequest params = new AuthParamsRequest();
+        params.setParam1("OTP");
+        params.setValue("1234");
+        paramsList.add(params);
+        AuthParamsRequest paramsNew = new AuthParamsRequest();
+        paramsNew.setParam2("CARD");
+        paramsNew.setValue("0441234567890");
+        paramsList.add(paramsNew);
         request.setAuthParams(paramsList);
         AccountValidationResponse accountValidation = ritsService.accountTokenValidate(request);
         return gson.toJson(accountValidation);
@@ -282,9 +287,8 @@ Payment Request Status finds all available information on a specific account, re
 
 
 ```java
-
-    @PostMapping(value = "/accountEnquiry")
-    public String getAccountEnquiry() throws Exception {
+      @PostMapping(value = "/accountEnquiry")
+      public String getAccountEnquiry() throws Exception {
         AccountEnqiriesRequest request = new AccountEnqiriesRequest();
         Credentials credentials=new Credentials();
         credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
@@ -297,9 +301,10 @@ Payment Request Status finds all available information on a specific account, re
         RemitaRITSService ritsService = new RemitaRITSService(credentials);
         request.setAccountNo("044222222");
         request.setBankCode("044");
+        request.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         AccountEnquiriesResponse accountEnquiry = ritsService.accountEnquiry(request);
         return gson.toJson(accountEnquiry);
-    }
+	}
 
 ```
 #### Bank Enquiry
