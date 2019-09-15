@@ -54,6 +54,7 @@ Adding an account to your merchant profile on the RITs is a dual process.
       @PostMapping(value = "/account")
       public String postAddAccount() throws Exception {
         Credentials credentials=new Credentials();
+        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
         credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
         credentials.setMerchantId("KUDI1234");
@@ -80,6 +81,7 @@ Adding an account to your merchant profile on the RITs is a dual process.
      @PostMapping(value = "/validateAccount")
     public String validateAddAccount() throws Exception {
        Credentials credentials=new Credentials();
+       credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
        credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
        credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
        credentials.setMerchantId("KUDI1234");
@@ -87,7 +89,7 @@ Adding an account to your merchant profile on the RITs is a dual process.
        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
        RemitaRITSService ritsService = new RemitaRITSService(credentials);
         AccountValidationRequest request = new AccountValidationRequest();
-        request.setRemitaTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
+        request.setRemitaTransRef("MTUxNjYwOTcxNzM3MQ==");
         AuthParamsRequest params = new AuthParamsRequest();
         List<AuthParamsRequest> paramsList = new ArrayList<>();
         params.setParam1("");
@@ -124,6 +126,7 @@ methods on the platform:
     @PostMapping(value = "/singlePayment")
     public String singlePayment() throws Exception {
         Credentials credentials=new Credentials();
+        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
         credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
         credentials.setMerchantId("KUDI1234");
@@ -173,6 +176,7 @@ methods on the platform:
     @PostMapping(value = "/bulkPayment")
     public String postBulkPayment() throws Exception {
         Credentials credentials=new Credentials();
+        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
         credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
         credentials.setMerchantId("KUDI1234");
@@ -225,6 +229,7 @@ The payment request status method essentially retrieves the status of a previous
     @PostMapping(value = "single/status")
     public String singlePaymentStatus() throws Exception {
         Credentials credentials=new Credentials();
+        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
         credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
         credentials.setMerchantId("KUDI1234");
@@ -248,6 +253,7 @@ The payment request status method essentially retrieves the status of a previous
     @PostMapping(value = "/bulkstatus")
     public String bulkPaymentStatus() throws Exception {
         Credentials credentials=new Credentials();
+        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
         credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
         credentials.setMerchantId("KUDI1234");
@@ -281,6 +287,7 @@ Payment Request Status finds all available information on a specific account, re
     public String getAccountEnquiry() throws Exception {
         AccountEnqiriesRequest request = new AccountEnqiriesRequest();
         Credentials credentials=new Credentials();
+        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
         credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
         credentials.setMerchantId("KUDI1234");
@@ -294,7 +301,6 @@ Payment Request Status finds all available information on a specific account, re
         return gson.toJson(accountEnquiry);
     }
 
-
 ```
 #### Bank Enquiry
 This method lists the banks that are active on the RITs platform. required fields(Payloads) are as follow;
@@ -306,6 +312,7 @@ This method lists the banks that are active on the RITs platform. required field
     @PostMapping(value = "/banks")
     public String getActiveBanks() throws Exception {
         Credentials credentials=new Credentials();
+        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
         credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
         credentials.setMerchantId("KUDI1234");

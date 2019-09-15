@@ -20,6 +20,21 @@ public class Credentials implements Serializable {
 
     private int connectionTimeOut = 15000;
 
+    private String requestId;
+
+
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
+
+
     public void setConnectionTimeOut(int connectionTimeOut) {
         this.connectionTimeOut = connectionTimeOut;
     }

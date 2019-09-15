@@ -54,7 +54,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -77,7 +77,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -116,7 +116,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -139,7 +139,7 @@ public class RemitaRITSService {
 				String apiKey = credentials.getApiKey();
 				String apiToken = credentials.getApiToken();
 				String merchantId = credentials.getMerchantId();
-				String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			    String requestId = credentials.getRequestId();
 				String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 				timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 				headers.add("MERCHANT_ID", merchantId);
@@ -178,7 +178,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -201,7 +201,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -240,7 +240,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -263,7 +263,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -305,7 +305,7 @@ public class RemitaRITSService {
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
 			headers.add("MERCHANT_ID", merchantId);
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("API_KEY", apiKey);
@@ -328,7 +328,7 @@ public class RemitaRITSService {
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
 			headers.add("MERCHANT_ID", merchantId);
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("API_KEY", apiKey);
@@ -367,7 +367,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -389,7 +389,7 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -427,8 +427,8 @@ public class RemitaRITSService {
 			String apiKey = credentials.getApiKey();
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
+			String requestId = credentials.getRequestId();
 			headers.add("MERCHANT_ID", merchantId);
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("API_KEY", apiKey);
@@ -451,7 +451,7 @@ public class RemitaRITSService {
 			String apiToken = credentials.getApiToken();
 			String merchantId = credentials.getMerchantId();
 			headers.add("MERCHANT_ID", merchantId);
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("API_KEY", apiKey);
@@ -491,7 +491,7 @@ public class RemitaRITSService {
 			String merchantId = credentials.getMerchantId();
 			headers.add("MERCHANT_ID", merchantId);
 			DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("API_KEY", apiKey);
@@ -516,7 +516,7 @@ public class RemitaRITSService {
 			String merchantId = credentials.getMerchantId();
 			headers.add("MERCHANT_ID", merchantId);
 			DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
-			String requestId = System.currentTimeMillis() + StringUtils.EMPTY;
+			String requestId = credentials.getRequestId();
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("API_KEY", apiKey);
