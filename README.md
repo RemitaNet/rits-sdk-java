@@ -142,13 +142,15 @@ methods on the platform:
         request.setAmount("5000");
         request.setBeneficiaryEmail("qa@test.com");
         request.setCreditAccount("0582915208099");
-        request.setDebitAccount("1234565678223");
-        request.setFromBank("04422");
+        request.setDebitAccount("1234565678");
+        request.setFromBank("044");
         request.setNarration("Regular Payment");
-        request.setToBank("05822");
+        request.setToBank("058");
         request.setTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
         SinglePaymentResponse singlePaymentResponse = ritsService.singlePayment(request);
         return gson.toJson(singlePaymentResponse);
+    }
+
 
 
 
@@ -178,8 +180,8 @@ methods on the platform:
 
 ```java
 
-    @PostMapping(value = "/bulkPayment")
-    public String postBulkPayment() throws Exception {
+      @PostMapping(value = "/bulkPayment")
+      public String postBulkPayment() throws Exception {
         Credentials credentials=new Credentials();
         credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
@@ -191,29 +193,42 @@ methods on the platform:
         BulkPaymentRequest request = new BulkPaymentRequest();
         BulkPaymentInfo bulkPaymentInfo = new BulkPaymentInfo();
         List<PaymentDetails> listPaymentDetails = new ArrayList<>();
+        
         PaymentDetails paymentDetails = new PaymentDetails();
-        bulkPaymentInfo.setTotalAmount("120000");
+        bulkPaymentInfo.setTotalAmount("20000");
         bulkPaymentInfo.setBatchRef(System.currentTimeMillis() + StringUtils.EMPTY);
-        bulkPaymentInfo.setDebitAccount("0441111111");
+        bulkPaymentInfo.setDebitAccount("1234565678");
         bulkPaymentInfo.setBankCode("044");
         bulkPaymentInfo.setNarration("Regular Payment");
-        paymentDetails.setAmount("50000");
+        
+        paymentDetails.setAmount("8000");
         paymentDetails.setBenficiaryEmail("qa@test.com");
         paymentDetails.setTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
-        paymentDetails.setBenficiaryBankCode("044");
-        paymentDetails.setBenficiaryAccountNumber("0442915208997");
+        paymentDetails.setBenficiaryBankCode("058");
+        paymentDetails.setBenficiaryAccountNumber("0582915208011");
         paymentDetails.setNarration("Regular Payment");
+        
         PaymentDetails paymentDetailsOne = new PaymentDetails();
-        paymentDetailsOne.setAmount("50500");
+        paymentDetailsOne.setAmount("8000");
         paymentDetailsOne.setBenficiaryEmail("qa@test.com");
         paymentDetailsOne.setTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
         paymentDetailsOne.setBenficiaryBankCode("058");
-        paymentDetailsOne.setBenficiaryAccountNumber("0582915208017");
+        paymentDetailsOne.setBenficiaryAccountNumber("0582915208012");
         paymentDetailsOne.setNarration("Regular Payment");
-        listPaymentDetails.add(paymentDetailsOne);
+        
+        PaymentDetails paymentDetailsTwo = new PaymentDetails();
+        paymentDetailsTwo.setAmount("4000");
+        paymentDetailsTwo.setBenficiaryEmail("qa@test.com");
+        paymentDetailsTwo.setTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
+        paymentDetailsTwo.setBenficiaryBankCode("058");
+        paymentDetailsTwo.setBenficiaryAccountNumber("0582915208013");
+        paymentDetailsTwo.setNarration("Regular Payment");
         listPaymentDetails.add(paymentDetails);
-        request.setBulkPaymentInfo(bulkPaymentInfo);
+        listPaymentDetails.add(paymentDetailsOne);
+        listPaymentDetails.add(paymentDetailsTwo);
+    
         request.setPaymentDetails(listPaymentDetails);
+        request.setBulkPaymentInfo(bulkPaymentInfo);
         BulkPaymentResponse bulkPaymentResponse = ritsService.bulkPayment(request);
         return gson.toJson(bulkPaymentResponse);
     }
