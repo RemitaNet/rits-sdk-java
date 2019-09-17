@@ -13,12 +13,18 @@ import org.springframework.web.client.RestTemplate;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 
 public class RemitaRITSService {
 
+
+	public static String algorithm = "AES";
+
+	public static String cipher = "AES/CBC/PKCS5PADDING";
 
 	private static DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
 
@@ -248,10 +254,10 @@ public class RemitaRITSService {
 
             for (PaymentDetails payment : pDetails) {
         	PaymentDetails details = FieldEncryptionService.encryptFields(payment, algorithm, cipher,credentials.getSecretKeyIv(), credentials.getSecretKey());
-        	bDetailsResolved.add(details) ;
+				pDetailsResolved.add(details) ;
             }
             request.setBulkPaymentInfo(bulkInfo);
-             request.setPaymentDetails(bDetailsResolved);
+             request.setPaymentDetails(pDetailsResolved);
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
@@ -279,13 +285,12 @@ public class RemitaRITSService {
 		    bulkInfo=FieldEncryptionService.encryptFields(bulkInfo, algorithm, cipher,credentials.getSecretKeyIv(), credentials.getSecretKey());
 			List<PaymentDetails> pDetails = request.getPaymentDetails();
             List<PaymentDetails> pDetailsResolved = new ArrayList<>();
-
             for (PaymentDetails payment : pDetails) {
         	PaymentDetails details = FieldEncryptionService.encryptFields(payment, algorithm, cipher,credentials.getSecretKeyIv(), credentials.getSecretKey());
-        	bDetailsResolved.add(details) ;
+        	pDetailsResolved.add(details) ;
             }
             request.setBulkPaymentInfo(bulkInfo);
-             request.setPaymentDetails(bDetailsResolved);
+             request.setPaymentDetails(pDetailsResolved);
 			String requesthash = SimpleSHAHashGenerator.generateSHA512SecurePassword(String.format("%s%s%s", apiKey, requestId, apiToken));
 			timestamp.setTimeZone(TimeZone.getTimeZone("UTC"));
 			headers.add("MERCHANT_ID", merchantId);
