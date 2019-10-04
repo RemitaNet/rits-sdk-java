@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <artifactId>remita-rpg-sdk-java</artifactId>
-    <groupId>ng.com.systemspecs</groupId>
+    <groupId>com.systemspecs.paymentinfra</groupId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 	<name>Remita Interbank Transfer Service (RITs) JAVA SDK</name>
