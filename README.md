@@ -96,7 +96,7 @@ Adding an account to your merchant profile on the RITs is a dual process.
         params.setValue("1234");
         paramsList.add(params);
         AuthParamsRequest paramsNew = new AuthParamsRequest();
-        paramsNew.setParam2("CARD");
+        paramsNew.setParam1("CARD");
         paramsNew.setValue("0441234567890");
         paramsList.add(paramsNew);
         request.setAuthParams(paramsList);
@@ -316,7 +316,6 @@ Payment Request Status finds all available information on a specific account, re
         RemitaRITSService ritsService = new RemitaRITSService(credentials);
         request.setAccountNo("044222222");
         request.setBankCode("044");
-        request.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
         AccountEnquiriesResponse accountEnquiry = ritsService.accountEnquiry(request);
         return gson.toJson(accountEnquiry);
 	}
