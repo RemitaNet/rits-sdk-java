@@ -1,3 +1,3 @@
-com.systemspecs.paymentinfra.config
-com.systemspecs.paymentinfra.dto
-com.systemspecs.paymentinfra.utils
+ng.com.systemspecs.config
+ng.com.systemspecs.dto
+ng.com.systemspecs.utils
