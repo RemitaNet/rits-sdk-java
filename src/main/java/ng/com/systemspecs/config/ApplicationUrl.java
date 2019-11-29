@@ -16,7 +16,7 @@ public class ApplicationUrl {
 
     public static String DEMO_SINGLE_PAYMENT = "https://remitademo.net/remita/exapp/api/v1/send/api/rpgsvc/rpg/api/v2/merc/payment/singlePayment.json";
 
-    public static String LIVE_SINGLE_PAYMENT = " https://login.remita.net/remita/exapp/api/v1/send/api/rpgsvc/rpg/api/v2/merc/payment/singlePayment.json";
+    public static String LIVE_SINGLE_PAYMENT = "https://login.remita.net/remita/exapp/api/v1/send/api/rpgsvc/rpg/api/v2/merc/payment/singlePayment.json";
 
     public static String DEMO_URL_ACCOUNT_ENQUIRY = "https://remitademo.net/remita/exapp/api/v1/send/api/rpgsvc/rpg/api/v2/merc/fi/account/lookup";
 
