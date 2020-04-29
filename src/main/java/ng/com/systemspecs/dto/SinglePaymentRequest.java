@@ -22,6 +22,10 @@ public class SinglePaymentRequest implements Serializable {
 
     private String transRef;
 
+    private String remitaFunded;
+
+    private String generateRrrOnly;
+
 
     public String getAmount() {
         return amount;
@@ -62,6 +66,14 @@ public class SinglePaymentRequest implements Serializable {
         return transRef;
     }
 
+    public String getRemitaFunded() {
+        return remitaFunded;
+    }
+
+    public String getGenerateRrrOnly() {
+        return generateRrrOnly;
+    }
+
 
     public void setAmount(String amount) {
         this.amount = amount;
@@ -100,5 +112,13 @@ public class SinglePaymentRequest implements Serializable {
 
     public void setTransRef(String transRef) {
         this.transRef = transRef;
+    }
+
+    public void setRemitaFunded(String remitaFunded) {
+        this.remitaFunded = remitaFunded;
+    }
+
+    public void setGenerateRrrOnly(String generateRrrOnly) {
+        this.generateRrrOnly = generateRrrOnly;
     }
 }

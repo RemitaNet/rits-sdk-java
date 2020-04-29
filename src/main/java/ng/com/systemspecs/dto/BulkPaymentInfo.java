@@ -16,6 +16,10 @@ public class BulkPaymentInfo implements Serializable {
 
     private String totalAmount;
 
+    private String remitaFunded;
+
+    private String generateRrrOnly;
+
 
     public String getBankCode() {
         return bankCode;
@@ -41,6 +45,14 @@ public class BulkPaymentInfo implements Serializable {
         return totalAmount;
     }
 
+    public String getRemitaFunded() {
+        return remitaFunded;
+    }
+
+    public String getGenerateRrrOnly() {
+        return generateRrrOnly;
+    }
+
 
     public void setBankCode(String bankCode) {
         this.bankCode = bankCode;
@@ -64,5 +76,13 @@ public class BulkPaymentInfo implements Serializable {
 
     public void setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public void setRemitaFunded(String remitaFunded) {
+        this.remitaFunded = remitaFunded;
+    }
+
+    public void setGenerateRrrOnly(String generateRrrOnly) {
+        this.generateRrrOnly = generateRrrOnly;
     }
 }
