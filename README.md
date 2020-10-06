@@ -1,20 +1,40 @@
+[![Maven Central](https://img.shields.io/maven-central/v/ng.com.systemspecs/remita-rits.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22ng.com.systemspecs%22%20AND%20a:%22remita-rits%22)
+
 # Remita Interbank Transfer Service (RITs) JAVA SDK
 This is the JAVA SDK for the Remita Interbank Transfer Service simple API
 
-# Package Managers
-#Maven
-To install the remita-rpg-sdk-java from central repository, add dependency to your application pom.xml as below.
-
+# Dependencies
+## Apache Maven
     <dependency>
-    <groupId>com.systemspecs.paymentinfra</groupId>
-    <artifactId>remita-rpg-sdk-java</artifactId>
-    <version>1.0-SNAPSHOT</version>
+        <groupId>ng.com.systemspecs</groupId>
+        <artifactId>remita-rits</artifactId>
+        <version>1.0.0</version>
     </dependency>
+## Gradle Groovy DSL
+    implementation 'ng.com.systemspecs:remita-rits:1.0.0'implementation 'ng.com.systemspecs:remita-rits:1.0.0'
 
-Run mvn install to install dependency
+## Gradle Kotlin DSL
+    implementation("ng.com.systemspecs:remita-rits:1.0.0")
 
+## Scala SBT
+    libraryDependencies += "ng.com.systemspecs" % "remita-rits" % "1.0.0"
+
+## Apache Ivy
+    <dependency org="ng.com.systemspecs" name="remita-rits" rev="1.0.0" />
+
+## Groovy Grape
+    @Grapes(@Grab(group='ng.com.systemspecs', module='remita-rits', version='1.0.0'))
+
+## Leiningen
+    [ng.com.systemspecs/remita-rits "1.0.0"]
+
+## Apache Buildr
+    'ng.com.systemspecs:remita-rits:jar:1.0.0'
+
+## Jar Download
+ To download Jar  [CLICK](https://search.maven.org/remotecontent?filepath=ng/com/systemspecs/remita-rits/1.0.0/remita-rits-1.0.0.jar) 
 ## Requirements
-*  Java 1.8 or later
+*  Java 8 or later
 *  STS , IntelliJ , Eclipse
 *  Maven 4 and later
 
@@ -24,94 +44,32 @@ The workflow to getting started on RITs is as follows:
 *  Register a profile on Remita: You can visit [Remita](https://login.remita.net) to sign-up if you are not already registered as a merchant/biller on the platform.
 *  Receive the Remita credentials that certify you as a Biller: SystemSpecs will send you your merchant ID and an API Key necessary to secure your handshake to the Remita platform.
 
-## Installing the SDK 
-
-*  Download the `rits-sdk-java-master.zip` package into a directory of your choice.
-*  Extract and go to the rits-sdk-java directory.
-*  Open RemitaRITsGatewayMaven from your IDE.
-*  Build/Rebuild the project.
-
+## Using the SDK 
+*  Add any of the above dependency in your build tool file. E.g For MAVEN, add the dependency in maven section to your pom.xml
 
 ## Configuration
-All merchant credentials needed to use RITs are being setup by instantiating the Credential Class and set the properties 
-in this class accordingly. Properties such as MerchantId, ApiKey, ApiToken, Key, Iv and the Environment needs to be set.
+All merchant credentials needed to use RITs are being setup by instantiating the Credential Class and set the properties in this class accordingly. Properties such as MerchantId, ApiKey, ApiToken, Key, Iv and the Environment needs to be set.
  
-_Note:_ Environment can either be TEST or LIVE, each of this environment has it respective Credential. Ensure you set the 
-right credentials. By default Environment is TEST.
+_Note:_ Environment can either be DEMO or LIVE, each of this environment has it respective Credential. Ensure you set the right credentials. By default Environment is TEST.
+Below is a code sample on how to Initialize and set the credentials.
 
-## Methods
-#### Adding Account(s) To Your Profile
-Adding an account to your merchant profile on the RITs is a dual process. 
-
-* The first step is to AddAccount, Fields required to add account includes the following;
-	1. accountNo: This is the number of the bank account being linked to merchant profile
-	2. bankCode: This is the CBN code of the bank in which the account is domiciled
-	3. transRef: This uniquely identifies the transaction
-	4. requestId: This uniquely identifies the request
-	
  ```java
-      
-      @PostMapping(value = "/account")
-      public String postAddAccount() throws Exception {
-        Credentials credentials=new Credentials();
-        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
-        credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
-        credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
-        credentials.setMerchantId("KUDI1234");
-        credentials.setSecretKey("cymsrniuxqtgfzva");
-        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
-        RemitaRITSService ritsService = new RemitaRITSService(credentials);
-        LinkAccountRequest request = new LinkAccountRequest();
-        request.setAccountNo("0441234567820");
-        request.setBankCode("044");
-        LinkAccountResponse accountResponse = ritsService.addAccount(request);
-        return gson.toJson(accountResponse);
-    }
+        Credentials credentials = new Credentials();
+        credentials.setMerchantId("DEMOMDA1234");
+        credentials.setApiKey("REVNT01EQTEyMzR8REVNT01EQQ==");
+        credentials.setApiToken("bmR1ZFFFWEx5R2c2NmhnMEk5a25WenJaZWZwbHFFYldKOGY0bHlGZnBZQ1N5WEpXU2Y1dGt3PT0=");
+        credentials.setSecretKey("nbzjfdiehurgsxct");
+        credentials.setSecretKeyIv("sngtmqpfurxdbkwj");
+        credentials.setRequestId(String.valueOf(System.currentTimeMillis()));
+        credentials.setEnvironment(EnvironmentType.DEMO);
+
+        RemitaRITSService remitaRITSService = new RemitaRITSServiceImpl(credentials);
+        remitaRITSService.getActiveBanks();
  ```
 
-* The second step validates the account holder via bank authentication on the account details. You will be required by 	your bank to validate the account details the AddAccount request is being issued for, required fields(Payloads) are as follow;
-	1. card: This is the one of the authentication detail required by the bank from the account owner to validate 	AddAccount request
-	2. otp: This is the another authentication detail required by the bank from the account owner to validate AddAccount 	request
-	3. remitaTransref: This uniquely identifies the specific add account request the validation is being called for
-	4. requestId: This uniquely identifies the request
-	
-
- ```java
- 
-     @PostMapping(value = "/validateAccount")
-    public String validateAddAccount() throws Exception {
-       Credentials credentials=new Credentials();
-       credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
-       credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
-       credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
-       credentials.setMerchantId("KUDI1234");
-       credentials.setSecretKey("cymsrniuxqtgfzva");
-       credentials.setSecretKeyIv("czidrfwqugpaxvkj");
-       RemitaRITSService ritsService = new RemitaRITSService(credentials);
-       AccountValidationRequest request = new AccountValidationRequest();
-        request.setRemitaTransRef("MTUxNjYwOTcxNzM3MQ==");
-        List<AuthParamsRequest> paramsList = new ArrayList<>();
-        AuthParamsRequest params = new AuthParamsRequest();
-        params.setParam1("OTP");
-        params.setValue("1234");
-        paramsList.add(params);
-        AuthParamsRequest paramsNew = new AuthParamsRequest();
-        paramsNew.setParam1("CARD");
-        paramsNew.setValue("0441234567890");
-        paramsList.add(paramsNew);
-        request.setAuthParams(paramsList);
-        AccountValidationResponse accountValidation = ritsService.accountTokenValidate(request);
-        return gson.toJson(accountValidation);
-    }
-   ```
-
-Successful authentication through the bank links the designated account to the corresponding merchant profile on the
-RITs platform.
-
+## Methods
 #### Payments
-Payments on the RITs platform can only be made from Remita-identifiable accounts. This means that before an account
-can be debited on the RITs, it must be linked to a profile. Merchants may process payments via the following SDK
-methods on the platform:
+Payments on the RITs platform can only be made from Remita-identifiable accounts. This means that before an account can be debited on the RITs, it must be linked to a profile. Merchants may process payments via the following SDK methods:
 
 * Single Payment Request: This charges/debits a merchant’s account with a specified amount to credit a designated 	beneficiary account. Fields(payload) to set include:
 	1. fromBank: This is the CBN code of the funding bank
@@ -122,21 +80,10 @@ methods on the platform:
 	6. amount: The amount to be debited from the debitAccountToken and credited to creditAccount in bank toBank. Format - ##.##
 	7. beneficiaryEmail: Email of the beneficiary (email of creditAccount holder)
 	8. transRef: A unique reference that identifies a payment request. This reference can be used sub- sequently to retrieve the details/status of the payment request
-	9. requestId: This uniquely identifies the request
-
 
 ```java
-
-
-    @PostMapping(value = "/singlePayment")
-    public String singlePayment() throws Exception {
-        Credentials credentials=new Credentials();
-        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
-        credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
-        credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
-        credentials.setMerchantId("KUDI1234");
-        credentials.setSecretKey("cymsrniuxqtgfzva");
-        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
+    public SinglePaymentResponse singlePayment(){
+    ...
         RemitaRITSService ritsService = new RemitaRITSService(credentials);
         SinglePaymentRequest request = new SinglePaymentRequest();
         request.setAmount("5000");
@@ -146,14 +93,10 @@ methods on the platform:
         request.setFromBank("044");
         request.setNarration("Regular Payment");
         request.setToBank("058");
-        request.setTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
+        request.setTransRef(String.valueOf(System.currentTimeMillis()));
         SinglePaymentResponse singlePaymentResponse = ritsService.singlePayment(request);
-        return gson.toJson(singlePaymentResponse);
+        return singlePaymentResponse;
     }
-
-
-
-
    ```
 
 
@@ -179,58 +122,55 @@ methods on the platform:
 
 
 ```java
-
-      @PostMapping(value = "/bulkPayment")
-      public String postBulkPayment() throws Exception {
-        Credentials credentials=new Credentials();
-        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
-        credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
-        credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
-        credentials.setMerchantId("KUDI1234");
-        credentials.setSecretKey("cymsrniuxqtgfzva");
-        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
+      public BulkPaymentResponse postBulkPayment() {
+        ...
         RemitaRITSService ritsService = new RemitaRITSService(credentials);
         BulkPaymentRequest request = new BulkPaymentRequest();
         BulkPaymentInfo bulkPaymentInfo = new BulkPaymentInfo();
-        List<PaymentDetails> listPaymentDetails = new ArrayList<>();
-        
+        List<PaymentDetails> listPaymentDetails = new ArrayList<PaymentDetails>();
+
         PaymentDetails paymentDetails = new PaymentDetails();
-        bulkPaymentInfo.setTotalAmount("20000");
-        bulkPaymentInfo.setBatchRef(System.currentTimeMillis() + StringUtils.EMPTY);
-        bulkPaymentInfo.setDebitAccount("1234565678");
-        bulkPaymentInfo.setBankCode("044");
+        bulkPaymentInfo.setBatchRef(String.valueOf(System.currentTimeMillis()));
+        bulkPaymentInfo.setDebitAccount("0581234567");
+        bulkPaymentInfo.setBankCode("058");
         bulkPaymentInfo.setNarration("Regular Payment");
-        
+
         paymentDetails.setAmount("8000");
         paymentDetails.setBenficiaryEmail("qa@test.com");
-        paymentDetails.setTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
+        paymentDetails.setTransRef(String.valueOf(System.currentTimeMillis()));
         paymentDetails.setBenficiaryBankCode("058");
         paymentDetails.setBenficiaryAccountNumber("0582915208011");
         paymentDetails.setNarration("Regular Payment");
-        
+
         PaymentDetails paymentDetailsOne = new PaymentDetails();
         paymentDetailsOne.setAmount("8000");
         paymentDetailsOne.setBenficiaryEmail("qa@test.com");
-        paymentDetailsOne.setTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
+        paymentDetailsOne.setTransRef(String.valueOf(System.currentTimeMillis()));
         paymentDetailsOne.setBenficiaryBankCode("058");
         paymentDetailsOne.setBenficiaryAccountNumber("0582915208012");
         paymentDetailsOne.setNarration("Regular Payment");
-        
+
         PaymentDetails paymentDetailsTwo = new PaymentDetails();
         paymentDetailsTwo.setAmount("4000");
         paymentDetailsTwo.setBenficiaryEmail("qa@test.com");
-        paymentDetailsTwo.setTransRef(System.currentTimeMillis() + StringUtils.EMPTY);
+        paymentDetailsTwo.setTransRef(String.valueOf(System.currentTimeMillis()));
         paymentDetailsTwo.setBenficiaryBankCode("058");
         paymentDetailsTwo.setBenficiaryAccountNumber("0582915208013");
         paymentDetailsTwo.setNarration("Regular Payment");
+
         listPaymentDetails.add(paymentDetails);
         listPaymentDetails.add(paymentDetailsOne);
         listPaymentDetails.add(paymentDetailsTwo);
-    
+
+        bulkPaymentInfo.setTotalAmount(String.valueOf(new BigDecimal(paymentDetails.getAmount())
+                .add(new BigDecimal(paymentDetailsOne.getAmount()))
+                .add(new BigDecimal(paymentDetailsTwo.getAmount()))));
+
+
         request.setPaymentDetails(listPaymentDetails);
         request.setBulkPaymentInfo(bulkPaymentInfo);
         BulkPaymentResponse bulkPaymentResponse = ritsService.bulkPayment(request);
-        return gson.toJson(bulkPaymentResponse);
+        return bulkPaymentResponse;
     }
 
 
@@ -244,24 +184,14 @@ The payment request status method essentially retrieves the status of a previous
 
 
 ```java
-
-
-    @PostMapping(value = "single/status")
-    public String singlePaymentStatus() throws Exception {
-        Credentials credentials=new Credentials();
-        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
-        credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
-        credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
-        credentials.setMerchantId("KUDI1234");
-        credentials.setSecretKey("cymsrniuxqtgfzva");
-        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
+    public PaymentStatusResponse singlePaymentStatus() {
+    ...
         RemitaRITSService ritsService = new RemitaRITSService(credentials);
         PaymentStatusRequest request = new PaymentStatusRequest();
-        request.setTransRef("293742");
+        request.setTransRef("1601031122038");
         PaymentStatusResponse paymentStatus = ritsService.singlePaymentStatus(request);
-        return gson.toJson(paymentStatus);
+        return paymentStatus;
     }
-
 ```
 
 * Bulk Send Payment Request Status: 
@@ -269,24 +199,14 @@ The payment request status method essentially retrieves the status of a previous
 	2. requestId: This uniquely identifies the request
 
 ```java
-
-    @PostMapping(value = "/bulkstatus")
-    public String bulkPaymentStatus() throws Exception {
-        Credentials credentials=new Credentials();
-        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
-        credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
-        credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
-        credentials.setMerchantId("KUDI1234");
-        credentials.setSecretKey("cymsrniuxqtgfzva");
-        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
+    public BulkPaymentResponse bulkPaymentStatus(){
+    ...
         RemitaRITSService ritsService = new RemitaRITSService(credentials);
         BulkPaymentStatusRequest request = new BulkPaymentStatusRequest();
-        request.setBatchRef("382849");
+        request.setBatchRef("1601036668810");
         BulkPaymentStatusResponse bulkResponse = ritsService.bulkPaymentStatus(request);
-        return gson.toJson(bulkResponse);
+        return bulkResponse;
     }
-
-
 ```
 
 #### Account Enquiry
@@ -296,28 +216,15 @@ Payment Request Status finds all available information on a specific account, re
 	   1. accountNo: Account number of tokenized account to be looked up
 	   2. bankCode: The bank code where the account is domiciled. Use the Banks Enquiry method
 	   3. requestId: This uniquely identifies the request
-
-
-
-
-
 ```java
-      @PostMapping(value = "/accountEnquiry")
-      public String getAccountEnquiry() throws Exception {
-        AccountEnqiriesRequest request = new AccountEnqiriesRequest();
-        Credentials credentials=new Credentials();
-        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
-        credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
-        credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
-        credentials.setMerchantId("KUDI1234");
-        credentials.setSecretKey("cymsrniuxqtgfzva");
-        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
-        credentials.setConnectionTimeOut(2000);
-        RemitaRITSService ritsService = new RemitaRITSService(credentials);
-        request.setAccountNo("044222222");
-        request.setBankCode("044");
-        AccountEnquiriesResponse accountEnquiry = ritsService.accountEnquiry(request);
-        return gson.toJson(accountEnquiry);
+      public AccountEnquiryResponse getAccountEnquiry(){
+      ...
+      RemitaRITSService ritsService = new RemitaRITSService(credentials);
+        AccountEnqiryRequest accountEnqiryRequest = new AccountEnqiryRequest();
+        accountEnqiryRequest.setAccountNo("044222222");
+        accountEnqiryRequest.setBankCode("044");
+        AccountEnquiryResponse accountEnquiryResponse = remitaRITSService.accountEnquiry(accountEnqiryRequest);
+        return accountEnquiryResponse;
 	}
 
 ```
@@ -326,20 +233,11 @@ This method lists the banks that are active on the RITs platform. required field
 
 
 ```java
-
-
-    @PostMapping(value = "/banks")
-    public String getActiveBanks() throws Exception {
-        Credentials credentials=new Credentials();
-        credentials.setRequestId(System.currentTimeMillis() + StringUtils.EMPTY);
-        credentials.setApiKey("S1VESTEyMzR8S1VESQ==");
-        credentials.setApiToken("dWFBTVVGTGZRUEZaemRvVC8wYVNuRkVTc2REVi9GWGdCMHRvWHNXTnovaz0=");
-        credentials.setMerchantId("KUDI1234");
-        credentials.setSecretKey("cymsrniuxqtgfzva");
-        credentials.setSecretKeyIv("czidrfwqugpaxvkj");
+    public GetBillerResponse getActiveBanks(){
+    ...
         RemitaRITSService ritsService = new RemitaRITSService(credentials);
-        GetActiveBankResponse activeBank = ritsService.getAllActiveBanks();
-        return gson.toJson(activeBank);
+        GetBillerResponse response = gatewayService.getBillers();
+        return response;
     }
 
 ```

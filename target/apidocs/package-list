@@ -1,3 +1,10 @@
-ng.com.systemspecs.config
-ng.com.systemspecs.dto
-ng.com.systemspecs.utils
+ng.com.systemspecs.remitarits.accountenquiry
+ng.com.systemspecs.remitarits.bankenquiry
+ng.com.systemspecs.remitarits.bulkpayment
+ng.com.systemspecs.remitarits.bulkpaymentstatus
+ng.com.systemspecs.remitarits.configuration
+ng.com.systemspecs.remitarits.service
+ng.com.systemspecs.remitarits.service.impl
+ng.com.systemspecs.remitarits.singlepayment
+ng.com.systemspecs.remitarits.singlepaymentstatus
+ng.com.systemspecs.remitarits.util
