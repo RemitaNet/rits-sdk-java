@@ -11,7 +11,7 @@ This is the JAVA SDK for the Remita Interbank Transfer Service simple API
         <version>1.0.0</version>
     </dependency>
 ## Gradle Groovy DSL
-    implementation 'ng.com.systemspecs:remita-rits:1.0.0'implementation 'ng.com.systemspecs:remita-rits:1.0.0'
+    implementation 'ng.com.systemspecs:remita-rits:1.0.0'
 
 ## Gradle Kotlin DSL
     implementation("ng.com.systemspecs:remita-rits:1.0.0")
@@ -50,7 +50,7 @@ The workflow to getting started on RITs is as follows:
 ## Configuration
 All merchant credentials needed to use RITs are being setup by instantiating the Credential Class and set the properties in this class accordingly. Properties such as MerchantId, ApiKey, ApiToken, Key, Iv and the Environment needs to be set.
  
-_Note:_ Environment can either be DEMO or LIVE, each of this environment has it respective Credential. Ensure you set the right credentials. By default Environment is TEST.
+_Note:_ Environment can either be DEMO or LIVE, each of this environment has it respective Credential. Ensure you set the right credentials. By default Environment is DEMO.
 Below is a code sample on how to Initialize and set the credentials.
 
  ```java
