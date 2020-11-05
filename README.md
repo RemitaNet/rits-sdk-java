@@ -84,7 +84,7 @@ Payments on the RITs platform can only be made from Remita-identifiable accounts
 ```java
     public SinglePaymentResponse singlePayment(){
     ...
-        RemitaRITSService ritsService = new RemitaRITSService(credentials);
+        RemitaRITSService ritsService = new RemitaRITSServiceImpl(credentials);
         SinglePaymentRequest request = new SinglePaymentRequest();
         request.setAmount("5000");
         request.setBeneficiaryEmail("qa@test.com");
@@ -124,7 +124,7 @@ Payments on the RITs platform can only be made from Remita-identifiable accounts
 ```java
       public BulkPaymentResponse postBulkPayment() {
         ...
-        RemitaRITSService ritsService = new RemitaRITSService(credentials);
+        RemitaRITSService ritsService = new RemitaRITSServiceImpl(credentials);
         BulkPaymentRequest request = new BulkPaymentRequest();
         BulkPaymentInfo bulkPaymentInfo = new BulkPaymentInfo();
         List<PaymentDetails> listPaymentDetails = new ArrayList<PaymentDetails>();
@@ -186,7 +186,7 @@ The payment request status method essentially retrieves the status of a previous
 ```java
     public PaymentStatusResponse singlePaymentStatus() {
     ...
-        RemitaRITSService ritsService = new RemitaRITSService(credentials);
+        RemitaRITSService ritsService = new RemitaRITSServiceImpl(credentials);
         PaymentStatusRequest request = new PaymentStatusRequest();
         request.setTransRef("1601031122038");
         PaymentStatusResponse paymentStatus = ritsService.singlePaymentStatus(request);
@@ -201,7 +201,7 @@ The payment request status method essentially retrieves the status of a previous
 ```java
     public BulkPaymentResponse bulkPaymentStatus(){
     ...
-        RemitaRITSService ritsService = new RemitaRITSService(credentials);
+        RemitaRITSService ritsService = new RemitaRITSServiceImpl(credentials);
         BulkPaymentStatusRequest request = new BulkPaymentStatusRequest();
         request.setBatchRef("1601036668810");
         BulkPaymentStatusResponse bulkResponse = ritsService.bulkPaymentStatus(request);
@@ -219,7 +219,7 @@ Payment Request Status finds all available information on a specific account, re
 ```java
       public AccountEnquiryResponse getAccountEnquiry(){
       ...
-      RemitaRITSService ritsService = new RemitaRITSService(credentials);
+      RemitaRITSService ritsService = new RemitaRITSServiceImpl(credentials);
         AccountEnqiryRequest accountEnqiryRequest = new AccountEnqiryRequest();
         accountEnqiryRequest.setAccountNo("044222222");
         accountEnqiryRequest.setBankCode("044");
@@ -235,7 +235,7 @@ This method lists the banks that are active on the RITs platform. required field
 ```java
     public GetBillerResponse getActiveBanks(){
     ...
-        RemitaRITSService ritsService = new RemitaRITSService(credentials);
+        RemitaRITSService ritsService = new RemitaRITSServiceImpl(credentials);
         GetBillerResponse response = gatewayService.getBillers();
         return response;
     }
