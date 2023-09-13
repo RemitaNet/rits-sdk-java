@@ -1,54 +1,65 @@
 [![Maven Central](https://img.shields.io/maven-central/v/ng.com.systemspecs/remita-rits.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22ng.com.systemspecs%22%20AND%20a:%22remita-rits%22)
 
 # Remita Interbank Transfer Service (RITs) JAVA SDK
+
+---
+- [Overview](#Overview)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Contributing](#Contributing)
+
+---
+## Overview
 This is the JAVA SDK for the Remita Interbank Transfer Service simple API
 
-
-# Dependencies
-## Apache Maven
-    <dependency>
-        <groupId>ng.com.systemspecs</groupId>
-        <artifactId>remita-rits</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-## Gradle Groovy DSL
-    implementation 'ng.com.systemspecs:remita-rits:1.0.0'
-
-## Gradle Kotlin DSL
-    implementation("ng.com.systemspecs:remita-rits:1.0.0")
-
-## Scala SBT
-    libraryDependencies += "ng.com.systemspecs" % "remita-rits" % "1.0.0"
-
-## Apache Ivy
-    <dependency org="ng.com.systemspecs" name="remita-rits" rev="1.0.0" />
-
-## Groovy Grape
-    @Grapes(@Grab(group='ng.com.systemspecs', module='remita-rits', version='1.0.0'))
-
-## Leiningen
-    [ng.com.systemspecs/remita-rits "1.0.0"]
-
-## Apache Buildr
-    'ng.com.systemspecs:remita-rits:jar:1.0.0'
-
-## Jar Download
- To download Jar  [CLICK](https://search.maven.org/remotecontent?filepath=ng/com/systemspecs/remita-rits/1.0.0/remita-rits-1.0.0.jar) 
-## Requirements
+## Installation
+### Requirements
 *  Java 8 or later
 *  STS , IntelliJ , Eclipse
 *  Maven 4 and later
 
-## Prerequisites
+### Prerequisites
 The workflow to getting started on RITs is as follows:
 
 *  Register a profile on Remita: You can visit [Remita](https://login.remita.net) to sign-up if you are not already registered as a merchant/biller on the platform.
 *  Receive the Remita credentials that certify you as a Biller: SystemSpecs will send you your merchant ID and an API Key necessary to secure your handshake to the Remita platform.
 
-## Using the SDK 
+### Dependencies
+#### Apache Maven
+    <dependency>
+        <groupId>ng.com.systemspecs</groupId>
+        <artifactId>remita-rits</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+#### Gradle Groovy DSL
+    implementation 'ng.com.systemspecs:remita-rits:1.0.0'
+
+#### Gradle Kotlin DSL
+    implementation("ng.com.systemspecs:remita-rits:1.0.0")
+
+#### Scala SBT
+    libraryDependencies += "ng.com.systemspecs" % "remita-rits" % "1.0.0"
+
+#### Apache Ivy
+    <dependency org="ng.com.systemspecs" name="remita-rits" rev="1.0.0" />
+
+#### Groovy Grape
+    @Grapes(@Grab(group='ng.com.systemspecs', module='remita-rits', version='1.0.0'))
+
+#### Leiningen
+    [ng.com.systemspecs/remita-rits "1.0.0"]
+
+#### Apache Buildr
+    'ng.com.systemspecs:remita-rits:jar:1.0.0'
+
+#### Jar Download
+ To download Jar  [CLICK](https://search.maven.org/remotecontent?filepath=ng/com/systemspecs/remita-rits/1.0.0/remita-rits-1.0.0.jar) 
+
+## Usage
+#### Using the SDK 
 *  Add any of the above dependency in your build tool file. E.g For MAVEN, add the dependency in maven section to your pom.xml
 
-## Configuration
+#### Configuration
 All merchant credentials needed to use RITs are being setup by instantiating the Credential Class and set the properties in this class accordingly. Properties such as MerchantId, ApiKey, ApiToken, Key, Iv and the Environment needs to be set.
  
 _Note:_ Environment can either be DEMO or LIVE, each of this environment has it respective Credential. Ensure you set the right credentials. By default Environment is DEMO.
@@ -68,8 +79,8 @@ Below is a code sample on how to Initialize and set the credentials.
         remitaRITSService.getActiveBanks();
  ```
 
-## Methods
-#### Payments
+#### Methods
+##### Payments
 Payments on the RITs platform can only be made from Remita-identifiable accounts. This means that before an account can be debited on the RITs, it must be linked to a profile. Merchants may process payments via the following SDK methods:
 
 * Single Payment Request: This charges/debits a merchant’s account with a specified amount to credit a designated 	beneficiary account. Fields(payload) to set include:
@@ -176,7 +187,7 @@ Payments on the RITs platform can only be made from Remita-identifiable accounts
 
 
 ```   
-#### Payment Request Status
+##### Payment Request Status
 The payment request status method essentially retrieves the status of a previous payment request(Single payment and Bulk payment) using its transaction reference.
 
 * Single Payment Request Status:
@@ -210,7 +221,7 @@ The payment request status method essentially retrieves the status of a previous
     }
 ```
 
-#### Account Enquiry
+##### Account Enquiry
 Payment Request Status finds all available information on a specific account, required fields(Payloads) are as follow;
 
 
@@ -229,7 +240,7 @@ Payment Request Status finds all available information on a specific account, re
 	}
 
 ```
-#### Bank Enquiry
+##### Bank Enquiry
 This method lists the banks that are active on the RITs platform. required fields(Payloads) are as follow;
 
 
@@ -244,5 +255,17 @@ This method lists the banks that are active on the RITs platform. required field
 ```
 
     
-## Support
+## Contributing
+- To contribute to this repo, follow these guidelines for creating issues, proposing new features, and submitting pull requests:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b "feature-name"`
+3. Make your changes and commit: `git commit -m "added some new features"`
+4. Push your changes: `git push origin feature-name`
+5. Submit a Pull Request (PR).
+
+### Useful links
+* Join our [Slack](http://bit.ly/RemitaDevSlack) community and support channel 
+    
+### Support
 - For all other support needs, support@remita.net
